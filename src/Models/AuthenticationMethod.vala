@@ -25,7 +25,8 @@ public enum Iridium.Models.AuthenticationMethod {
     SERVER_PASSWORD,
     NICKSERV_MSG,
     SASL_PLAIN,
-    SASL_EXTERNAL;
+    SASL_EXTERNAL,
+    SASL_OAUTH;
 
     public string get_display_string () {
         switch (this) {
@@ -39,6 +40,8 @@ public enum Iridium.Models.AuthenticationMethod {
                 return _("SASL (Plain)");
             case SASL_EXTERNAL:
                 return _("SASL (External)");
+            //  case SASL_OAUTH:
+                //  return _("SASL (OAuth)");
             default:
                 assert_not_reached ();
         }

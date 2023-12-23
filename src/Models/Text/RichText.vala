@@ -21,8 +21,11 @@
 
 public abstract class Iridium.Models.Text.RichText : GLib.Object {
 
-    // https://github.com/didrocks/geary/blob/master/src/client/util/util-webkit.vala
-    private static string URI_REGEX_STR = "(?i)\\b((?:[a-z][\\w-]+:(?:/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))";  // vala-lint=naming-convention
+    // https://github.com/didrocks/geary/blob/master/src/client/util/util-webkit.vala but actually 
+    // https://daringfireball.net/2010/07/improved_regex_for_matching_urls 
+    // improved regex found in this gist: https://gist.github.com/gruber/8891611
+    //  private static string URI_REGEX_STR = "(?i)\\b((?:[a-z][\\w-]+:(?:/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))";  // vala-lint=naming-convention
+    private static string URI_REGEX_STR = "((?<=[^a-zA-Z0-9])(?:https?\\:\\/\\/|[a-zA-Z0-9]{1,}\\.{1}|\b)(?:\\w{1,}\\.{1}){1,5}(?:com|org|edu|gov|uk|net|ca|de|jp|fr|au|us|ru|ch|it|nl|se|no|es|mil|iq|io|ac|ly|sm){1}(?:\\/[a-zA-Z0-9]{1,})*)";
     private static GLib.Regex URI_REGEX; // vala-lint=naming-convention
 
     public Iridium.Services.Message message { get; construct; }

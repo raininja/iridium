@@ -30,6 +30,7 @@ public class Iridium.Widgets.UsersPopover.ChannelUsersList : Gtk.TreeView {
         NICKNAME,
         OP_BADGE,
         IS_OP
+        //  IS_USER
     }
 
     private const string DEFAULT_STYLESHEET = """

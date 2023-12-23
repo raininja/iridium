@@ -36,7 +36,7 @@ class TestServerDriver:
         getattr(self, '_' + args.command)()
 
     def _create(self):
-        parser = argparse.ArgumentParser(description='Create and run a a test server')
+        parser = argparse.ArgumentParser(description='Create and run a test server')
         parser.add_argument('-e', nargs='*', help='An environment variable to pass to the server')
         args = parser.parse_args(sys.argv[2:])
         self.docker_client.containers.run(IMAGE,
